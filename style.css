@@ -141,6 +141,8 @@ i {
 .btn-roll { top: 403px;}
 .btn-hold { top: 467px;}
 
+button[disabled]:hover { cursor: not-allowed; }
+
 .dice {
     position: absolute;
     left: 50%;

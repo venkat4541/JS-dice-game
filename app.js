@@ -14,9 +14,6 @@ scores = [0, 0];
 roundScore = 0;
 activePlayer = 0;
 
-var totalScoreDOM = document.querySelector('#score-' + activePlayer);
-var currentScoreDOM = document.querySelector('#current-' + activePlayer);
-
 // Hiding the dice at the start of game.
 document.querySelector('.dice').style.display = 'none';
 
@@ -40,11 +37,19 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
   // 3. Update the round score IF the rolled number was NOT 1
   if (dice !== 1) {
     roundScore += dice;
-    currentScoreDOM.textContent = roundScore;
+    document.querySelector('#current-' + activePlayer).textContent = roundScore;
+    if (roundScore + scores[activePlayer] >= 20) {
+      document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
+      document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
+      document.querySelector('#name-' + activePlayer).textContent = 'Winner';
+      document.querySelector('.btn-roll').disabled = true;
+      document.querySelector('.btn-hold').disabled = true;
+      alert('Player ' + activePlayer + ' has won the game!');
+    }
 
   } else {
     roundScore = 0;
-    currentScoreDOM.textContent = 0;
+    document.getElementById('current-' + activePlayer).textContent = 0;
     switchPlayer();
   }
 
@@ -54,9 +59,9 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
 // On clicking the hold button
 document.querySelector('.btn-hold').addEventListener('click', function() {
   scores[activePlayer] += roundScore;
-  totalScoreDOM.textContent = scores[activePlayer];
+  document.getElementById('score-' + activePlayer).textContent = scores[activePlayer];
   roundScore = 0;
-  currentScoreDOM.textContent = 0;
+  document.getElementById('current-' + activePlayer).textContent = 0;
   switchPlayer();
 });
 
