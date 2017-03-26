@@ -12,10 +12,12 @@ var scores, roundScore, activePlayer, dice;
 
 scores = [0, 0];
 roundScore = 0;
-activePlayer = 1;
+activePlayer = 0;
 
+// Hiding the dice at the start of game.
 document.querySelector('.dice').style.display = 'none';
 
+// Making all scores 0 first.
 document.getElementById('score-0').textContent = 0;
 document.getElementById('score-1').textContent = 0;
 document.getElementById('current-0').textContent = 0;
@@ -27,17 +29,40 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
   dice = Math.floor(Math.random() * 6) + 1;
   console.log(dice);
 
-  // 2. Display the result
+  // 2. Display the dice result
   var diceDOM = document.querySelector('.dice');
   diceDOM.style.display = 'block';
   diceDOM.src = 'dice-' + dice + '.png';
 
+  // 3. Update the round score IF the rolled number was NOT 1
+  if (dice !== 1) {
+    roundScore += dice;
+    document.querySelector('#current-' + activePlayer).textContent = roundScore;
 
-  // 3. Update the round score IF the rolled number was NOT s 1
-
+  } else {
+    roundScore = 0;
+    document.getElementById('current-' + activePlayer).textContent = 0;
+    switchPlayer();
+  }
 
 });
 
+
+// On clicking the hold button
+document.querySelector('.btn-hold').addEventListener('click', function() {
+  scores[activePlayer] += roundScore;
+  document.getElementById('score-' + activePlayer).textContent = scores[activePlayer];
+  roundScore = 0;
+  document.getElementById('current-' + activePlayer).textContent = 0;
+  switchPlayer();
+});
+
+function switchPlayer() {
+  document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
+  activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
+  document.querySelector('.player-' + activePlayer + '-panel').classList.add('active');
+
+}
 
 // document.querySelector('#current-' + activePlayer).textContent = dice;
 // document.querySelector('#current-' + activePlayer).innerHTML = '<em>' + dice + '</em>';
