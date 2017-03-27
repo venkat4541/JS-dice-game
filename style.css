@@ -16,14 +16,38 @@
 }
 
 body {
-    background-image: linear-gradient(rgba(62, 20, 20, 0.4), rgba(62, 20, 20, 0.4)), url(back.jpg);
-    background-size: cover;
+    background: url(BG.png) #555;
+    background-blend-mode: exclusion;
     background-position: center;
     font-family: Lato;
     font-weight: 300;
     position: relative;
     height: 100vh;
     color: #555;
+    background-size: 250px;
+}
+
+button.btn {
+    position: absolute;
+    width: 200px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #555;
+    background: none;
+    border: none;
+    font-family: Lato;
+    font-size: 20px;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: 300;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+button.btn:hover { font-weight: 600; }
+button.btn:hover i { margin-right: 20px; }
+
+button.btn:focus {
+    outline: none;
 }
 
 .wrapper {
@@ -36,8 +60,103 @@ body {
     box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.3);
     overflow: hidden;
 }
+.btn-rules {
+  outline: none;
+  position: absolute;
+  top: 0;
+  right: -75px;
+  background: #eb4d4d;
+  border: 0;
+  cursor: pointer;
+  width: 100px;
+  height: 25px;
+  padding-left: 11px;
+  padding-bottom: 2px;
+  text-align: left;
+  transition: all .3s cubic-bezier(0, 1.5, 1, 1.2);
+}
 
-.player-0-panel,
+.btn-rules:hover {
+  right: 0px;
+  transition: all .3s cubic-bezier(0, 1, 1, 1);
+}
+
+i.ion-information {
+  color: #eee;
+  font-size: 1em;
+  margin: 0;
+  padding-top: 2px;
+}
+
+.btn-rules:hover i.ion-information {
+  color: #424242;
+}
+
+.btn-rules:hover span {
+  border: 2px solid #eb4d4d;
+  line-height: 23px;
+}
+
+.btn-rules span {
+  text-transform: uppercase;
+  color: #fff;
+  background: #424242;
+  text-align: right;
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 25px;
+  width: 75px;
+  text-align: center;
+  line-height: 25px;
+  font-size: .8em;
+  letter-spacing: .3em;
+}
+
+.rules {
+  position: absolute;
+  top: -800px;
+  height: 100%;
+  width: 100%;
+  color: #bbb;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 1000;
+  padding: 50px;
+  line-height: 35px;
+  transition: all 1s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  font-size: .9em;
+}
+
+.rules h4 {
+  color: #eb4d4d;
+  font-size: 1.2em;
+}
+
+button.x {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 1em;
+  width: 17px;
+  border: none;
+  background: #eb4d4d;
+  border-radius: 25px;
+  padding-bottom: 1px;
+  transition: all .4s;
+}
+
+button.x:hover {
+  transform: rotate(360deg);
+  transition: all .4s;
+}
+
+li {
+  margin-left: 17px;
+  line-height: 30px;
+}
+
+.player-2-panel,
 .player-1-panel {
     width: 50%;
     float: left;
@@ -101,29 +220,6 @@ body {
 
 .player-current-score {
     font-size: 30px;
-}
-
-button {
-    position: absolute;
-    width: 200px;
-    left: 50%;
-    transform: translateX(-50%);
-    color: #555;
-    background: none;
-    border: none;
-    font-family: Lato;
-    font-size: 20px;
-    text-transform: uppercase;
-    cursor: pointer;
-    font-weight: 300;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-button:hover { font-weight: 600; }
-button:hover i { margin-right: 20px; }
-
-button:focus {
-    outline: none;
 }
 
 i {
