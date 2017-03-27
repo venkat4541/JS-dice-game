@@ -27,6 +27,13 @@ body {
     background-size: 250px;
 }
 
+.dice {
+  -webkit-transition: opacity 1s ease-in-out;
+-moz-transition: opacity 1s ease-in-out;
+-o-transition: opacity 1s ease-in-out;
+transition: opacity 1s ease-in-out;
+}
+
 button.btn {
     position: absolute;
     width: 200px;
@@ -133,6 +140,7 @@ i.ion-information {
 }
 
 button.x {
+  outline: none;
   position: absolute;
   top: 10px;
   right: 10px;
@@ -250,3 +258,26 @@ button[disabled]:hover { cursor: not-allowed; }
 
 .winner { background-color: #f7f7f7; }
 .winner .player-name { font-weight: 300; color: #EB4D4D; }
+
+.footer {
+    height: 25px;
+    position: absolute;
+    bottom: 0;
+    background: #333;
+    width: 100%;
+    color: #bbb;
+    font-size: .7em;
+    line-height: 25px;
+    text-align: center;
+}
+
+.footer a {
+  color: #EB4D4D;
+  text-decoration: none;
+  transition: all .4s ease-in-out;
+}
+
+.footer a:hover {
+  color: #FFC107;
+  transition: all .4s ease-in-out;
+}

@@ -33,6 +33,10 @@ function init() {
   document.getElementById('score-2').textContent = 0;
   document.getElementById('current-1').textContent = 0;
   document.getElementById('current-2').textContent = 0;
+
+  document.querySelector('.player-1-panel').classList.remove('winner');
+  document.querySelector('.player-2-panel').classList.remove('winner');
+  document.querySelector('.player-1-panel').classList.add('active');
 }
 
 // New game
@@ -60,7 +64,7 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
       document.querySelector('.btn-roll').disabled = true;
       document.querySelector('.btn-hold').disabled = true;
       document.getElementById('score-' + activePlayer).textContent = roundScore + scores[activePlayer];
-      setTimeout(alert('Player ' + activePlayer + ' has won the game!'), 5000);
+      alert('Player ' + activePlayer + ' has won the game!');
     }
 
   } else {
